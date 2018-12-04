@@ -11,8 +11,8 @@ void Test1()
 	while (j--)   //给猜错的三次机会
 	{
 		srand((unsigned int)time(0));
-		int num = rand() % 10 + 1;  //1-10之间的数
-		printf("请输入你猜的数字：");
+		int num = rand() % 100 + 1;  //1-100之间的数
+		printf("请输入你猜的数字(1~100)：");
 		scanf_s("%d", &i);
 		if (num == i)
 		{
@@ -26,17 +26,53 @@ void Test1()
 			printf("再来一次吧。。。\n");
 		}
 	}
-	printf("你真菜!!!!\n");
 }
 
 //2 在整型有序数组中查找想要的数字，找到了返回下标，找不到返回-1.
-void Test2()
+//二分查找
+int BinarySearch(int arr[], int len, int key)
 {
-
+	int left = 0; 
+	int right = len - 1;
+	while (left <= right)
+	{
+		int mid = left + ((right - left) >> 1);
+		if (arr[mid] == key)
+		{
+			return mid;
+		}
+		else if (arr[mid] > key)
+		{
+			right = mid - 1;
+		}
+		else
+		{
+			left = mid + 1;
+		}
+	}
+	return -1;
+}
+int Test2()
+{
+	int arr[] = { 1,2,3,4,5,6,7,8,9 };
+	int len = sizeof(arr) / sizeof(arr[0]);
+	int key = 0;
+	printf("请输入你要查找的数字：");
+	scanf_s("%d", &key);
+	int ret = BinarySearch(arr,len,key);
+	if (ret == -1)
+	{
+		printf("没找到.\n");
+	}
+	else
+	{
+		printf("找到了,下标是: %d\n",ret);
+	}
+	return 0;
 }
 int main()
 {
 	//Test1();
-	Test2();
+	//Test2();
 	return 0;
 }
