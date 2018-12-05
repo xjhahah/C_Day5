@@ -92,10 +92,31 @@ void Test3()
 		}
 	}
 }
+
+
+//写一个程序，可以一直接收键盘字符，如果是小写字符就输出对应的大写字符，如果接收的是大写字符，就输出对应的小写字符，如果是数字不输出。
+void Test4()
+{
+	char c;
+	while (1)
+	{
+		scanf_s("%c", &c,1);
+		if (c >= 'a'&&c <= 'z')
+		{
+			printf("%c", c -= 32);
+		}
+		else if (c >= 'A'&&c <= 'Z')
+		{
+			printf("%c", c += 32);
+		}
+	}
+	printf("\n");
+}
 int main()
 {
 	//Test1();
 	//Test2();
-	Test3();
+	//Test3();
+	Test4();
 	return 0;
 }
