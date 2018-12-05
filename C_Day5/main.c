@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-
+#include <string.h>
 
 //1 猜数字游戏
 void Test1()
@@ -70,9 +70,32 @@ int Test2()
 	}
 	return 0;
 }
+
+//3 模拟三次密码输入的场景
+void Test3()
+{
+	int password = 123456;
+	int i = 3;
+	int key;
+	while (i--)
+	{
+		printf("请输入密码：");
+		scanf_s("%d", &key);
+		if (key == password)
+		{
+			printf("密码正确，登陆成功...\n");
+			break;
+		}
+		else
+		{
+			printf("密码错误，请重新输入！\n");
+		}
+	}
+}
 int main()
 {
 	//Test1();
 	//Test2();
+	Test3();
 	return 0;
 }
